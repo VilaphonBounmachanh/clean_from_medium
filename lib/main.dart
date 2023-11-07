@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_clean_medium/src/config/routes/app_route.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,16 +8,15 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  /// create an instance of `AppRouter`
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    return MaterialApp.router(
+      // hook up router to MaterialApp
+      debugShowCheckedModeBanner: false,
+      routerDelegate: appRoute.delegate(),
+      routeInformationParser: appRoute.defaultRouteParser(),
     );
   }
 }
